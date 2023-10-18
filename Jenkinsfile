@@ -10,11 +10,11 @@ pipeline {
 
         stage('Migrate DB'){
             steps{
-                sh "migrate  -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
+                sh "migrate -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
             }
         }
 
-          stage('Lint') {
+        stage('Lint') {
             steps {
                 script {
                     sh '''#!/bin/bash
@@ -23,12 +23,13 @@ pipeline {
                     '''
                 }
             }
+        }
               
         stage('Build') {
             steps {
                 sh "ls"
                 echo 'Compiling and building'
-                sh 'go build ./cmd/main.go' // замість 'go run'
+                sh 'go build ./cmd/main.go' # замість 'go run'
             }
         }
 
