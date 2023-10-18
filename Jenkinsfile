@@ -10,8 +10,7 @@ pipeline {
         stage('Load linter') {
                     steps {
                 script {
-                    sh "        go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-"
+                    sh "        go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest"
                 }
             }
         }
