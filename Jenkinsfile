@@ -7,6 +7,14 @@ pipeline {
                  sh 'go version'
             }
         } 
+        stage('Load linter') {
+                    steps {
+                script {
+                    sh "        go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+"
+                }
+            }
+        }
          stage('Load modules') {
             steps {
                 script {
