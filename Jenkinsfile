@@ -7,10 +7,14 @@ pipeline {
                  sh 'go version'
             }
         } 
-        stage('Load linter') {
+        stage('Load env') {
                     steps {
                 script {
-sh "$GOPATH/bin/golangci-lint run -v"
+                    sh '''
+                      export GOPATH=$HOME/go
+                      $GOPATH/bin/golangci-lint run -v
+                    '''
+
                 }
             }
         }
