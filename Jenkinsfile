@@ -7,21 +7,11 @@ pipeline {
                  sh 'go version'
             }
         } 
-        stage('Load env') {
-                    steps {
-                script {
-                    sh '''
-                      export GOPATH=$HOME/go
-                      $GOPATH/bin/golangci-lint run -v
-                    '''
 
-                }
-            }
-        }
          stage('Load modules') {
             steps {
                 script {
-                    sh "go mod download"
+                   go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
                 }
             }
         }
@@ -29,7 +19,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                   sh "$GOPATH/bin/golangci-lint run -v"
+                  golangci-lint version
                 }
             }
         }
