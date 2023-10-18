@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh "ls"
                 echo 'Compiling and building'
-                sh 'go build /cmd'
+                sh 'go run ./cmd'
             }
         }
 
