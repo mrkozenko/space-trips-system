@@ -15,16 +15,14 @@ pipeline {
                 }
                 sh 'go version'
             }
+        } // Тут була пропущена фігурна дужка
         
         stage('Build') {
             steps {
                 sh "ls"
                 echo 'Compiling and building'
-                sh 'go run ./cmd/main.go'
+                sh 'go build ./cmd/main.go' // замість 'go run'
             }
         }
-
-
-        }
-        
-    }
+    }    
+}
