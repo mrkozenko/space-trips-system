@@ -11,7 +11,7 @@ pipeline {
          stage('Load modules') {
             steps {
                 script {
-                   go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+                   sh "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest"
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                  golangci-lint version
+                  sh "golangci-lint version"
                 }
             }
         }
