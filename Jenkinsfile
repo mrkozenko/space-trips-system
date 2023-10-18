@@ -19,7 +19,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                  sh "golangci-lint version"
+                  sh '$(go env GOPATH)/bin/golangci-lint version'
                 }
             }
         }
