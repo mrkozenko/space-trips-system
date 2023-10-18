@@ -7,21 +7,18 @@ pipeline {
                  sh 'go version'
             }
         } 
-
-        stage('Migrate DB'){
-            steps{
-                sh "migrate -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
-            }
-        }
-
+        
         stage('Lint') {
             steps {
                 script {
-                    sh '''
-                    go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-                    golangci-lint run
-                    '''
+                    sh "golangci-lint run -v"
                 }
+            }
+        }
+        
+        stage('Migrate DB'){
+            steps{
+                sh "migrate -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
             }
         }
               
