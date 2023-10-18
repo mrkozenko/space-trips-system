@@ -7,7 +7,14 @@ pipeline {
                  sh 'go version'
             }
         } 
-        
+         stage('Load modules') {
+            steps {
+                script {
+                    sh "go mod download"
+                }
+            }
+        }
+
         stage('Lint') {
             steps {
                 script {
