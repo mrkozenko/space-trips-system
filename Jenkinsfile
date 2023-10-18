@@ -7,6 +7,13 @@ pipeline {
                  sh 'go version'
             }
         } // Тут була пропущена фігурна дужка
+
+        stage('Migrate DB'){
+steps{
+    sh "migrate  -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
+}
+        }
+
         
         stage('Build') {
             steps {
