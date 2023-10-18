@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh "ls"
                 echo 'Compiling and building'
-                sh 'go build ./cmd/main.go' // замість 'go run'
+                sh 'go run ./cmd/main.go' // замість 'go run'
             }
         }
     }    
