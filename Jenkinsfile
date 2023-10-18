@@ -10,7 +10,7 @@ pipeline {
         stage('Load linter') {
                     steps {
                 script {
-sh 'curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.42.1'
+sh "$GOPATH/bin/golangci-lint run -v"
                 }
             }
         }
