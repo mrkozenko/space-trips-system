@@ -17,7 +17,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                    sh '''#!/bin/bash
+                    sh '''
                     go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
                     golangci-lint run
                     '''
