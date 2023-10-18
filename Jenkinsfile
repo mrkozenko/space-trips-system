@@ -6,20 +6,35 @@ pipeline {
             steps {
                  sh 'go version'
             }
-        } // Тут була пропущена фігурна дужка
+        } 
 
         stage('Migrate DB'){
-steps{
-    sh "migrate  -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
-}
+            steps{
+                sh "migrate  -path ./schema -database 'postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable' up"
+            }
         }
 
-        
+          stage('Lint') {
+            steps {
+                script {
+                    sh '''#!/bin/bash
+                    go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+                    golangci-lint run
+                    '''
+                }
+            }
+              
         stage('Build') {
             steps {
                 sh "ls"
                 echo 'Compiling and building'
-                sh 'go run ./cmd/main.go' // замість 'go run'
+                sh 'go build ./cmd/main.go' // замість 'go run'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh './main'
             }
         }
     }    
