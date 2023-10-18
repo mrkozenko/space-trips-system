@@ -32,15 +32,8 @@ pipeline {
               
         stage('Build') {
             steps {
-                sh "ls"
                 echo 'Compiling and building'
                 sh 'go build ./cmd/main.go'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                sh './main'
             }
         }
     }    
