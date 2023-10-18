@@ -45,5 +45,5 @@ require (
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	github.com/golangci/golangci-lint/cmd/golangci-lint@latest // indirect
 )
