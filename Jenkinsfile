@@ -1,10 +1,9 @@
 pipeline {
     agent any
-
+    tools { go '1.21.1' }
     stages {    
-        stage('Setup Go') {
+        stage('Pre test') {
             steps {
-                 goInstall version: '1.21.1'
                  sh 'go version'
             }
         } // Тут була пропущена фігурна дужка
